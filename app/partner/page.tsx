@@ -42,7 +42,7 @@ export default function PartnerPage() {
             </span>
             <h1 className="mt-6 max-w-4xl font-display text-5xl font-medium leading-[1.05] text-ivory sm:text-6xl lg:text-7xl">
               Add the region&apos;s most trusted cinema to your{" "}
-              <span className="text-gold-gradient italic">development.</span>
+              <span className="text-gold italic">development.</span>
             </h1>
             <p className="mt-6 max-w-2xl text-lg font-light text-white/70">
               A multiplex is the anchor that pulls footfall through your entire

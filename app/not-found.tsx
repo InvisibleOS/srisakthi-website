@@ -4,7 +4,7 @@ export default function NotFound() {
   return (
     <section className="grain grid min-h-svh place-items-center bg-ink px-5 text-center">
       <div>
-        <p className="text-gold-gradient font-display text-8xl font-semibold sm:text-9xl">
+        <p className="text-gold font-display text-8xl font-semibold sm:text-9xl">
           404
         </p>
         <h1 className="mt-4 font-display text-3xl text-ivory sm:text-4xl">

@@ -34,7 +34,7 @@ export default function AboutPage() {
             </span>
             <h1 className="mt-6 max-w-4xl font-display text-5xl font-medium leading-[1.02] text-ivory sm:text-6xl lg:text-7xl">
               A decade of bringing the big screen{" "}
-              <span className="text-gold-gradient italic">closer to home.</span>
+              <span className="text-gold italic">closer to home.</span>
             </h1>
             <p className="mt-6 max-w-xl text-lg font-light text-white/70">
               From a single hall in Tiruppur to six landmark multiplexes across
@@ -85,7 +85,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-2 gap-10 lg:grid-cols-4">
             {groupStats.map((stat, i) => (
               <Reveal key={stat.label} delay={i * 80} className="text-center">
-                <p className="text-gold-gradient font-display text-5xl font-semibold sm:text-6xl">
+                <p className="text-gold font-display text-5xl font-semibold sm:text-6xl">
                   <AnimatedCounter value={stat.value} />
                 </p>
                 <p className="mt-3 text-[0.7rem] font-medium uppercase tracking-[0.22em] text-white/55">

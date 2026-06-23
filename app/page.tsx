@@ -40,7 +40,7 @@ export default function Home() {
               Where great stories
               <span className="mt-1 block">
                 meet the{" "}
-                <span className="text-gold-gradient italic">grand screen.</span>
+                <span className="text-gold italic">grand screen.</span>
               </span>
             </h1>
             <p className="animate-fade-up delay-2 mt-8 max-w-xl text-lg font-light leading-relaxed text-white/70">
@@ -269,7 +269,7 @@ export default function Home() {
             </span>
             <h2 className="mt-6 font-display text-5xl font-medium leading-[1.05] text-ivory sm:text-6xl">
               Planning a mall, mixed-use or
-              <span className="text-gold-gradient italic"> high-street icon?</span>
+              <span className="text-gold italic"> high-street icon?</span>
             </h2>
             <p className="mx-auto mt-6 max-w-xl text-lg font-light text-white/70">
               Let&apos;s explore what a Sri Sakthi multiplex could add to your

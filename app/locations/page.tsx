@@ -32,7 +32,7 @@ export default function LocationsPage() {
             </span>
             <h1 className="mt-6 max-w-4xl font-display text-5xl font-medium leading-[1.02] text-ivory sm:text-6xl lg:text-7xl">
               Six cities. One{" "}
-              <span className="text-gold-gradient italic">standard</span> of cinema.
+              <span className="text-gold italic">standard</span> of cinema.
             </h1>
             <p className="mt-6 max-w-xl text-lg font-light text-white/70">
               Choose a property to load showtimes, pick your seats and explore
