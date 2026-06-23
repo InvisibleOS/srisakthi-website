@@ -4,11 +4,11 @@
  * Per the brief this is intentionally left as an empty container — drop the
  * BookMyShow <iframe>/script inside `#bms-embed` when the integration is ready.
  */
-export function BookWidget({ cityName }: { cityName: string }) {
+export function BookWidget({ cityName }: { cityName?: string }) {
   return (
     <div
       id="bms-embed"
-      data-bms-city={cityName}
+      data-bms-city={cityName ?? ""}
       className="shimmer relative flex min-h-[360px] flex-col items-center justify-center overflow-hidden rounded-2xl border border-dashed border-gold/40 bg-ink-soft p-10 text-center"
     >
       <span className="grid size-14 place-items-center rounded-full bg-gold/15 text-gold">
@@ -25,8 +25,10 @@ export function BookWidget({ cityName }: { cityName: string }) {
         BookMyShow ticketing
       </h3>
       <p className="mt-2 max-w-sm text-sm leading-relaxed text-white/55">
-        Live showtimes &amp; seat selection for {cityName} load here. The
-        BookMyShow embed plugs into this container.
+        {cityName
+          ? `Live showtimes & seat selection for ${cityName} load here.`
+          : "Pick a cinema and live showtimes & seat selection load right here."}{" "}
+        The BookMyShow embed plugs into this container.
       </p>
       <span className="mt-5 rounded-full border border-white/15 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.22em] text-white/45">
         Embed placeholder

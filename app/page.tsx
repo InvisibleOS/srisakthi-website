@@ -4,6 +4,7 @@ import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { LocationCard } from "@/components/location-card";
 import { NowShowingMarquee } from "@/components/now-showing-marquee";
+import { BookWidget } from "@/components/book-widget";
 import { locations, groupStats, partnerValues, img } from "@/lib/data";
 
 export default function Home() {
@@ -11,16 +12,21 @@ export default function Home() {
     <>
       {/* ---------------- Hero ---------------- */}
       <section className="relative flex min-h-svh items-center overflow-hidden bg-ink">
+        {/* Always-on cinematic gradient — keeps the hero rich even if the
+            background photo is slow or fails to load (never flat black). */}
+        <div className="absolute inset-0 bg-[radial-gradient(125%_120%_at_72%_18%,#3c1e22_0%,#1a0f12_48%,#0b0b0d_78%)]" />
         <Image
-          src={img.heroSeats}
-          alt="Auditorium seating bathed in low light"
+          src={img.auditorium}
+          alt="Premium auditorium with a glowing screen"
           fill
           priority
           sizes="100vw"
-          className="animate-slow-zoom object-cover opacity-70"
+          className="animate-slow-zoom object-cover opacity-85"
         />
-        <div className="absolute inset-0 bg-linear-to-r from-ink via-ink/80 to-ink/30" />
-        <div className="absolute inset-0 bg-linear-to-t from-ink to-transparent" />
+        {/* Left vignette for text legibility; lighter on the right so the
+            auditorium imagery clearly shows through. */}
+        <div className="absolute inset-0 bg-linear-to-r from-ink via-ink/65 to-ink/10" />
+        <div className="absolute inset-0 bg-linear-to-t from-ink via-ink/25 to-transparent" />
 
         <div className="relative mx-auto w-full max-w-7xl px-5 pb-24 pt-32 sm:px-8">
           <div className="max-w-2xl">
@@ -37,7 +43,7 @@ export default function Home() {
             </p>
             <div className="animate-fade-up delay-3 mt-9 flex flex-col gap-3 sm:flex-row">
               <Link
-                href="/locations"
+                href="#book"
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-gold px-7 py-3.5 text-base font-semibold text-ink transition-transform duration-300 hover:-translate-y-0.5 hover:bg-gold-bright"
               >
                 Book Tickets
@@ -59,6 +65,33 @@ export default function Home() {
             Scroll
           </span>
           <span className="h-10 w-px bg-linear-to-b from-gold to-transparent" />
+        </div>
+      </section>
+
+      {/* ---------------- Book tickets (BookMyShow embed) ---------------- */}
+      <section id="book" className="scroll-mt-24 bg-ink py-20">
+        <div className="mx-auto max-w-5xl px-5 sm:px-8">
+          <SectionHeading
+            eyebrow="Book tickets"
+            title="Your next show starts here"
+            intro="Choose a cinema below — the BookMyShow window opens right here."
+            align="center"
+            tone="light"
+          />
+          <Reveal className="mt-8 flex flex-wrap justify-center gap-2.5">
+            {locations.map((loc) => (
+              <Link
+                key={loc.slug}
+                href={`/locations/${loc.slug}`}
+                className="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-medium text-white/80 transition-colors hover:border-gold hover:text-gold"
+              >
+                {loc.city}
+              </Link>
+            ))}
+          </Reveal>
+          <Reveal className="mt-8">
+            <BookWidget />
+          </Reveal>
         </div>
       </section>
 
