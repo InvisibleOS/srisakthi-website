@@ -68,21 +68,20 @@ export default function Home() {
       </section>
 
       {/* ---------------- Book tickets ---------------- */}
-      <section id="book" className="grain scroll-mt-24 bg-ink py-24">
+      <section id="book" className="scroll-mt-24 bg-white py-24">
         <div className="mx-auto max-w-5xl px-5 sm:px-8">
           <SectionHeading
             eyebrow="Book tickets"
             title="Your next show starts here"
             intro="Pick a date and showtime below — or choose a city for its full schedule."
             align="center"
-            tone="light"
           />
           <Reveal className="mt-9 flex flex-wrap justify-center gap-2.5">
             {locations.map((loc) => (
               <Link
                 key={loc.slug}
                 href={`/locations/${loc.slug}`}
-                className="rounded-full border border-white/15 px-5 py-2 text-xs font-medium uppercase tracking-[0.14em] text-white/70 transition-colors hover:border-gold hover:text-gold"
+                className="rounded-full border border-ink/15 px-5 py-2 text-xs font-medium uppercase tracking-[0.14em] text-ink/65 transition-colors hover:border-gold-deep hover:text-gold-deep"
               >
                 {loc.city}
               </Link>
