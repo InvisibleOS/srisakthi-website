@@ -1,26 +1,196 @@
 @import "tailwindcss";
 
+/*
+  Sri Sakthi Cinemas — design tokens
+  Palette lifted from srisakthi.net: ink black + signature gold (#ffcc29),
+  warm cream surfaces and a soft cool-grey section background.
+*/
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #14110c;
 }
 
 @theme inline {
+  /* Brand */
+  --color-ink: #0b0b0d;
+  --color-ink-soft: #18171b;
+  --color-ink-line: #262329;
+  --color-gold: #ffcc29;
+  --color-gold-bright: #ffd84d;
+  --color-gold-deep: #d9a400;
+  --color-cream: #f7f4ec;
+  --color-mist: #f4f8fc;
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  /* Type */
+  --font-display: var(--font-secular), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+
+  /* Motion */
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-ink);
+}
+
+/* ---------- Scroll-reveal (subtle fade-up) ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.8s var(--ease-soft),
+    transform 0.8s var(--ease-soft);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- Keyframe utilities ---------- */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slow-zoom {
+  from {
+    transform: scale(1.08);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.9s var(--ease-soft) both;
+}
+.animate-fade-in {
+  animation: fade-in 1.2s var(--ease-soft) both;
+}
+.animate-slow-zoom {
+  animation: slow-zoom 9s var(--ease-soft) forwards;
+}
+
+/* Staggered helpers for hero copy */
+.delay-1 {
+  animation-delay: 0.15s;
+}
+.delay-2 {
+  animation-delay: 0.3s;
+}
+.delay-3 {
+  animation-delay: 0.45s;
+}
+.delay-4 {
+  animation-delay: 0.6s;
+}
+
+/* Looping marquee row */
+.marquee-track {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: marquee 32s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* Skeleton shimmer for the empty booking embed */
+.shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 204, 41, 0.12),
+    transparent
+  );
+  animation: shimmer 2.4s infinite;
+}
+
+/* Thin gold underline that grows on hover (nav links) */
+.link-underline {
+  position: relative;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 2px;
+  width: 100%;
+  background: var(--color-gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s var(--ease-soft);
+}
+.link-underline:hover::after {
+  transform: scaleX(1);
+}
+
+/* Honour reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .animate-fade-up,
+  .animate-fade-in,
+  .animate-slow-zoom,
+  .marquee-track,
+  .shimmer::after {
+    animation: none !important;
+  }
 }
