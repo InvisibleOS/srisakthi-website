@@ -14,25 +14,27 @@ export default function LocationsPage() {
   return (
     <>
       {/* Hero band */}
-      <section className="relative overflow-hidden bg-ink pb-16 pt-36 sm:pt-40">
+      <section className="grain relative overflow-hidden bg-ink pb-20 pt-40 sm:pt-48">
         <Image
           src={img.marquee}
           alt=""
           fill
           priority
           sizes="100vw"
-          className="object-cover opacity-25"
+          className="object-cover opacity-30"
         />
-        <div className="absolute inset-0 bg-linear-to-t from-ink via-ink/85 to-ink/60" />
+        <div className="absolute inset-0 bg-linear-to-t from-ink via-ink/85 to-ink/55" />
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
           <Reveal>
-            <span className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">
-              Our cinemas
+            <span className="flex items-center gap-4 text-gold">
+              <span className="ornament" aria-hidden />
+              <span className="kicker">Our cinemas</span>
             </span>
-            <h1 className="mt-4 max-w-3xl font-display text-4xl leading-tight tracking-tight text-white sm:text-5xl">
-              Six cities. One standard of cinema.
+            <h1 className="mt-6 max-w-4xl font-display text-5xl font-medium leading-[1.02] text-ivory sm:text-6xl lg:text-7xl">
+              Six cities. One{" "}
+              <span className="text-gold-gradient italic">standard</span> of cinema.
             </h1>
-            <p className="mt-4 max-w-xl text-lg text-white/70">
+            <p className="mt-6 max-w-xl text-lg font-light text-white/70">
               Choose a property to load showtimes, pick your seats and explore
               the venue.
             </p>
@@ -41,9 +43,9 @@ export default function LocationsPage() {
       </section>
 
       {/* Grid */}
-      <section className="bg-mist py-20">
+      <section className="bg-mist py-24">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
             {locations.map((loc, i) => (
               <Reveal key={loc.slug} delay={i * 80} className="h-full">
                 <LocationCard location={loc} />

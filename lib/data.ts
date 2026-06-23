@@ -158,23 +158,103 @@ export function getLocation(slug: string): Location | undefined {
   return locations.find((l) => l.slug === slug);
 }
 
-// "Now showing" placeholders for the marquee / embed area.
-export type NowShowing = {
+// Now-showing films with mock showtimes — powers the booking module and the
+// "now showing" marquee. Posters are rendered as tonal gradient tiles.
+export type Movie = {
+  id: string;
   title: string;
   language: string;
   rating: string;
   genre: string;
+  runtime: string;
+  formats: string[];
+  /** Gradient tones for the poster tile. */
+  poster: { from: string; to: string };
+  showtimes: string[];
 };
 
-export const nowShowing: NowShowing[] = [
-  { title: "Vaanam Paarthen", language: "Tamil", rating: "U/A", genre: "Drama" },
-  { title: "Kadal Raja", language: "Tamil", rating: "U", genre: "Action" },
-  { title: "Sky Above", language: "English", rating: "U/A", genre: "Sci-Fi" },
-  { title: "Megha", language: "Telugu", rating: "U", genre: "Romance" },
-  { title: "The Long Night", language: "English", rating: "A", genre: "Thriller" },
-  { title: "Maalai Neram", language: "Tamil", rating: "U/A", genre: "Family" },
-  { title: "Pathway 9", language: "Hindi", rating: "U/A", genre: "Adventure" },
+export const movies: Movie[] = [
+  {
+    id: "vaanam-paarthen",
+    title: "Vaanam Paarthen",
+    language: "Tamil",
+    rating: "U/A",
+    genre: "Drama",
+    runtime: "2h 28m",
+    formats: ["2D", "Dolby Atmos"],
+    poster: { from: "#33406b", to: "#0d1326" },
+    showtimes: ["10:15 AM", "1:30 PM", "5:00 PM", "8:30 PM"],
+  },
+  {
+    id: "kadal-raja",
+    title: "Kadal Raja",
+    language: "Tamil",
+    rating: "U",
+    genre: "Action",
+    runtime: "2h 41m",
+    formats: ["2D", "3D", "Dolby Atmos"],
+    poster: { from: "#7a1f1f", to: "#260b0b" },
+    showtimes: ["11:00 AM", "2:45 PM", "6:15 PM", "9:45 PM"],
+  },
+  {
+    id: "sky-above",
+    title: "Sky Above",
+    language: "English",
+    rating: "U/A",
+    genre: "Sci-Fi",
+    runtime: "2h 09m",
+    formats: ["IMAX-class", "4K Laser"],
+    poster: { from: "#155e57", to: "#06201f" },
+    showtimes: ["10:45 AM", "1:50 PM", "7:20 PM", "10:30 PM"],
+  },
+  {
+    id: "megha",
+    title: "Megha",
+    language: "Telugu",
+    rating: "U",
+    genre: "Romance",
+    runtime: "2h 18m",
+    formats: ["2D"],
+    poster: { from: "#6d2748", to: "#2a0f1d" },
+    showtimes: ["12:15 PM", "3:30 PM", "6:45 PM"],
+  },
+  {
+    id: "the-long-night",
+    title: "The Long Night",
+    language: "English",
+    rating: "A",
+    genre: "Thriller",
+    runtime: "1h 58m",
+    formats: ["2D", "Dolby Atmos"],
+    poster: { from: "#26352f", to: "#0a110f" },
+    showtimes: ["1:15 PM", "4:20 PM", "9:10 PM"],
+  },
+  {
+    id: "pathway-9",
+    title: "Pathway 9",
+    language: "Hindi",
+    rating: "U/A",
+    genre: "Adventure",
+    runtime: "2h 34m",
+    formats: ["2D", "3D"],
+    poster: { from: "#6b4a1b", to: "#241808" },
+    showtimes: ["11:30 AM", "3:00 PM", "6:30 PM", "10:00 PM"],
+  },
 ];
+
+// Static mock dates for the booking date picker (week of 23 Jun 2026).
+export const showDates = [
+  { weekday: "Today", day: "23" },
+  { weekday: "Tomorrow", day: "24" },
+  { weekday: "Thu", day: "25" },
+  { weekday: "Fri", day: "26" },
+  { weekday: "Sat", day: "27" },
+  { weekday: "Sun", day: "28" },
+  { weekday: "Mon", day: "29" },
+];
+
+// The marquee only needs title / language / rating.
+export const nowShowing = movies;
 
 // Group-level stats used across the home / about / partner pages.
 export const groupStats = [

@@ -1,22 +1,22 @@
 import type { Metadata } from "next";
-import { Secular_One, Poppins } from "next/font/google";
+import { Cormorant_Garamond, Jost } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 
-// Display face — matches the headline font used on srisakthi.net
-const secular = Secular_One({
-  weight: "400",
+// Display face — an elegant high-contrast serif for an editorial, grand feel
+const cormorant = Cormorant_Garamond({
+  weight: ["500", "600", "700"],
+  style: ["normal", "italic"],
   subsets: ["latin"],
-  variable: "--font-secular",
+  variable: "--font-cormorant",
   display: "swap",
 });
 
-// Body face — also lifted from the live brand site
-const poppins = Poppins({
-  weight: ["300", "400", "500", "600", "700"],
+// Body / UI face — a quiet geometric sans that lets the serif lead
+const jost = Jost({
   subsets: ["latin"],
-  variable: "--font-poppins",
+  variable: "--font-jost",
   display: "swap",
 });
 
@@ -37,7 +37,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${secular.variable} ${poppins.variable} h-full antialiased`}
+      className={`${cormorant.variable} ${jost.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-white text-ink">
         <SiteHeader />

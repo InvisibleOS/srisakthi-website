@@ -43,18 +43,15 @@ export function SiteHeader() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`link-underline text-sm font-medium tracking-wide transition-colors ${
-                  active ? "text-gold" : "text-white/85 hover:text-white"
+                className={`link-underline text-xs font-medium uppercase tracking-[0.16em] transition-colors ${
+                  active ? "text-gold" : "text-white/75 hover:text-white"
                 }`}
               >
                 {link.label}
               </Link>
             );
           })}
-          <Link
-            href="/locations"
-            className="rounded-full bg-gold px-5 py-2.5 text-sm font-semibold text-ink transition-transform duration-300 hover:-translate-y-0.5 hover:bg-gold-bright"
-          >
+          <Link href="/locations" className="btn btn-gold !px-6 !py-2.5">
             Book Tickets
           </Link>
         </nav>
@@ -100,7 +97,7 @@ export function SiteHeader() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="rounded-lg px-3 py-3 text-base font-medium text-white/85 transition-colors hover:bg-white/5 hover:text-gold"
+                className="rounded-lg px-3 py-3 font-display text-2xl text-ivory transition-colors hover:text-gold"
               >
                 {link.label}
               </Link>
@@ -108,7 +105,7 @@ export function SiteHeader() {
             <Link
               href="/locations"
               onClick={() => setOpen(false)}
-              className="mt-2 rounded-full bg-gold px-5 py-3 text-center text-base font-semibold text-ink"
+              className="btn btn-gold mt-3"
             >
               Book Tickets
             </Link>

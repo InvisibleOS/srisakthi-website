@@ -8,17 +8,19 @@ export function NowShowingMarquee() {
   const items = [...nowShowing, ...nowShowing];
 
   return (
-    <div className="border-y border-ink-line bg-ink py-4">
-      <div className="group relative flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
-        <div className="marquee-track">
+    <div className="border-y border-ink-line bg-ink py-6">
+      <div className="group relative flex overflow-hidden mask-[linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+        <div className="marquee-track items-center">
           {items.map((film, i) => (
             <span
               key={`${film.title}-${i}`}
-              className="mx-7 inline-flex items-center gap-3 text-sm text-white/70"
+              className="mx-9 inline-flex items-center gap-4"
             >
-              <span className="size-1.5 rounded-full bg-gold" aria-hidden />
-              <span className="font-medium text-white">{film.title}</span>
-              <span className="text-white/40">
+              <span className="ornament opacity-70" aria-hidden />
+              <span className="font-display text-2xl text-ivory">
+                {film.title}
+              </span>
+              <span className="text-[0.7rem] font-medium uppercase tracking-[0.2em] text-white/40">
                 {film.language} · {film.rating}
               </span>
             </span>

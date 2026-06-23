@@ -8,7 +8,7 @@ type Props = {
   tone?: "light" | "dark";
 };
 
-/** Eyebrow + headline + optional intro paragraph, with a built-in reveal. */
+/** Kicker + elegant serif headline + optional intro, with a built-in reveal. */
 export function SectionHeading({
   eyebrow,
   title,
@@ -17,30 +17,30 @@ export function SectionHeading({
   tone = "dark",
 }: Props) {
   const isCenter = align === "center";
-  const titleColor = tone === "light" ? "text-white" : "text-ink";
-  const introColor = tone === "light" ? "text-white/70" : "text-ink/65";
+  const titleColor = tone === "light" ? "text-ivory" : "text-ink";
+  const introColor = tone === "light" ? "text-white/65" : "text-ink/60";
 
   return (
-    <Reveal
-      className={`max-w-2xl ${isCenter ? "mx-auto text-center" : ""}`}
-    >
+    <Reveal className={`max-w-2xl ${isCenter ? "mx-auto text-center" : ""}`}>
       {eyebrow && (
         <span
-          className={`inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-gold-deep ${
+          className={`flex items-center gap-3 text-gold-deep ${
             isCenter ? "justify-center" : ""
           }`}
         >
-          <span className="h-px w-6 bg-gold-deep/60" aria-hidden />
-          {eyebrow}
+          <span className="ornament" aria-hidden />
+          <span className="kicker">{eyebrow}</span>
         </span>
       )}
       <h2
-        className={`mt-4 font-display text-3xl leading-tight tracking-tight sm:text-4xl ${titleColor}`}
+        className={`mt-5 font-display text-4xl leading-[1.08] sm:text-5xl ${titleColor}`}
       >
         {title}
       </h2>
       {intro && (
-        <p className={`mt-4 text-base leading-relaxed ${introColor}`}>{intro}</p>
+        <p className={`mt-5 text-lg font-light leading-relaxed ${introColor}`}>
+          {intro}
+        </p>
       )}
     </Reveal>
   );
