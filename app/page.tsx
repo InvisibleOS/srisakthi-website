@@ -68,7 +68,7 @@ export default function Home() {
       </section>
 
       {/* ---------------- Book tickets ---------------- */}
-      <section id="book" className="scroll-mt-24 bg-white py-24">
+      <section id="book" className="scroll-mt-24 bg-ivory py-24">
         <div className="mx-auto max-w-5xl px-5 sm:px-8">
           <SectionHeading
             eyebrow="Book tickets"
